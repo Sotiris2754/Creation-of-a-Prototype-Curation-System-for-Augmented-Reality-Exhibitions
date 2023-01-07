@@ -24,6 +24,32 @@
 
 	<body>
 		<script>
+
+				AFRAME.registerComponent('showhideform', 
+			{
+				init: function () 
+				{
+					this.el.addEventListener('click', function (evt) 
+					{
+						console.log('Click on: ',showHideForm() ); //evt.detail.intersection.object.el.id
+						
+					});
+					
+				}
+			});
+
+				function showHideForm()
+				{
+					if  (document.getElementById('myDiv').style.display=='block') // an i forma einai emfanis tha klisei
+					{	
+						document.getElementById('myDiv').style.display='none';
+					}
+
+					else if (document.getElementById('myDiv').style.display=='none') // an i forma einai kleisti
+					{
+						document.getElementById('myDiv').style.display='block'; // emfanisi formas
+					}
+				}
 			
 
 		</script>
@@ -40,16 +66,31 @@
 				<img id="cube2" src="Cube2.png">
 			</a-assets>
 		<a-sky color="lightblue"></a-sky>
+
+<!-- ΕΔΩ ΕΙΝΑΙ ΤΟ DIV ΜΕ ΤΗΝ ΦΟΡΜΑ ΑΠΟ ΤΟ ΕΓΓΡΑΦΟ ΠΟΥ ΜΟΥ ΣΤΕΙΛΑΤΕ
+ -->
+			  <div id="myDiv" style="display:none; width:400px ;height:600px; position:absolute; top:10%; left:10%; z-index:10; border-style:solid;">
+			Upload Form
+			<button style="position:absolute; right:0%;" onclick="showHideForm();">X</button>
+			<form id="form" method="post" enctype="multipart/form-data" class="w-50">
+					
+					<?php inputFields("","userfile","","file") ?>
+					
+					<button id="btnn" class="btn btn-dark" type="submit" name="submit">Submit</button>
+				</form>
+		</div>
 	
-		
 
 <!-- <a-plane static-body width="20" height="20" rotation="-90 0 0" color="gray"></a-plane> -->
 <!-- <a-box test class="clickable" color="pink"></a-box> -->
  
-<a-box static-body showlist east class="clickable" color="green
+
+ <!-- 	ΕΜΦΑΝΙΖΕΙ ΤΗΝ ΛΙΣΤΑ ΜΕ ΚΛΙΚ  -->
+<a-box static-body showhideform east class="clickable" color="green
 	" position="14.5 -.5 -2.75" scale="0.75 2.5 1.4 " >
 </a-box>
 
+ <!-- 	ΕΜΦΑΝΙΖΕΙ ΤΟ PLANE, ΜΕ ΤΙΣ ΕΙΚΟΝΕΣ ΚΑΝΟΝΤΑΣ ΚΛΙΚ  -->
 <a-box static-body showlist north class="clickable" color="yellow
 	" position="10 -.5 -4.5" rotation="0 90 0" scale="0.75 2.5 1.4 " >
 	
@@ -89,7 +130,7 @@
 		<a-image id="cube2" test class="clickable" src="#cube2" width="1" height="1" position=".5 .9 0.05"></a-image>
 	</a-plane>
 		
-	<!-- <a-entity gltf-model="#building" scale="2 2 2" position="-15 -1 17" rotation="0 90 0"></a-entity> -->
+	<a-entity gltf-model="#building" scale="2 2 2" position="-15 -1 17" rotation="0 90 0"></a-entity>
 
 
 </a-scene>
