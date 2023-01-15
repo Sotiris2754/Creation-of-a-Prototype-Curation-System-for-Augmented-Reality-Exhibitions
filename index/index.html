@@ -74,6 +74,11 @@
 			<button style="position:absolute; right:0%;" onclick="showHideForm();">X</button>
 			<form id="form" method="post" enctype="multipart/form-data" class="w-50">
 					
+					<!-- 
+							Για να δουλέψει αυτό (ανοίγεις php tag) θα πρέπει το αρχείο να έχει κατάληξη .php (index.php)
+							Επίσης, η συνάρτηση inputFields() βρίσκεται στο αρχείο https://github.com/vkomianos/web-vr-collaborative-exhibitions/blob/main/functions.php
+							άρα θα πρέπει να φτιάξεις και εσύ κάτι αντίστοιχο.
+					-->
 					<?php inputFields("","userfile","","file") ?>
 					
 					<button id="btnn" class="btn btn-dark" type="submit" name="submit">Submit</button>
